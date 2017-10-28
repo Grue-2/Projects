@@ -3,7 +3,7 @@
 These are projects whose broad themes are 
 in sync with what I'd love to learn.
 
-## RNG_Scripts
+## RNG_Scripts - generate cryptographic keys with a TrueRNGv3
 
 ### Preface
 Getting access to effectively random numbers is not easy.
@@ -33,7 +33,7 @@ The scripts interface with the HRNG which spits out etnropy bits. While the HRNG
 whitens its output, the scripts default setting will von Neumann the output again
 just in case.
 
-those spit out bits are stored in a buffer then written to a keyfile.
+Those spit out entropy bits are stored in a buffer then written to a keyfile.
 
 ### User guide
 
@@ -49,7 +49,7 @@ If its working it should look like this :
 
 
 ## tic-tac-toe AI
-
+ - Play tic tac toe with an AI
 
 ##### Playing the game itself may require javaFX
 
