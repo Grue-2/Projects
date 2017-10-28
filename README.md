@@ -81,7 +81,7 @@ gives a nice tic tac toe game.
 
 ## Image_Processing - edge detection / visualizing random data
 
-### Image Filters - Canny edge dectection, twoMedianThresholdFiltering, sobel edge detection, guassian/mean blur
+### Image Filters - Canny edge dectection, sobel edge detection, guassian/mean blur
 
 #### Preface
 Computerphile did a cool video https://www.youtube.com/watch?v=uihBwtPIBxM and some others on visual filters.
@@ -89,16 +89,18 @@ The description of the algorithm seemed understandble enough that I figured why 
 (Simple reason would be theres better work already done out there, but it's a learning process)
 
 #### Purpose
-Implements canny edge detection, two median threshold filtering, 
-sobel edge detection, and guassian/mean blurs on .png images.
+Implements canny edge detection, sobel edge detection, 
+and guassian/mean blurs on .png images.
 
 #### Method of action
 Mostly uses simple kernel convolution.
 
-Canny edge detection -
-two median threshold filtering -
-sobel edge detection -
-guassian/mean blur - 
+guassian/mean blur - kernel convolution averaging values surrounding the pixel, gussian weighs the central pixels higher
+which helps peserve edges.
+sobel edge detection - kernel convolution testing for x/y direction changes, that is creates a response when theres an edge.
+Canny edge detection - input is sobel, thins sobels edges ( finds local edge maximums and dulls the rest), then
+uses two threshholds of intensity, one determines which edges are kept, and the other determines which thresholds 
+are kept if they are in connection with a stronger edge.(Unfortunately my poor implementation tends to break things apart)  
 
 #### User guide
 
@@ -115,11 +117,11 @@ than my play algorithms here.)
 
 Below is an example of what these functions can do
 
-##### before:
+##### base image:
 
 ![alt text](/images/before.png "filter example image")
 
-##### after:
+##### filtered image:
 
 ![alt text](/images/after.png "filter example image")
 
