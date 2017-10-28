@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.ChatScene">
+   <children>
+      <BorderPane prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #9fe0dc;">
+         <top>
+            <HBox prefHeight="100.0" prefWidth="200.0" spacing="200.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Label prefHeight="60.0" prefWidth="457.0" text="Decrypted Discord Chat.">
+                     <font>
+                        <Font size="36.0" />
+                     </font>
+                  </Label>
+                  <ImageView fitHeight="106.0" fitWidth="119.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@splash.png" />
+                     </image>
+                  </ImageView>
+               </children>
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
+            </HBox>
+         </top>
+         <center>
+            <TextArea fx:id="chatWindow" editable="false" prefHeight="411.0" prefWidth="770.0" BorderPane.alignment="CENTER" />
+         </center>
+         <padding>
+            <Insets bottom="15.0" left="15.0" right="15.0" top="5.0" />
+         </padding>
+         <bottom>
+            <VBox prefHeight="102.0" prefWidth="770.0" BorderPane.alignment="CENTER">
+               <children>
+                  <HBox prefHeight="57.0" prefWidth="770.0">
+                     <children>
+                        <Label text="Input: ">
+                           <font>
+                              <Font size="36.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="input" prefHeight="46.0" prefWidth="646.0">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </TextField>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="42.0" prefWidth="770.0" spacing="10.0">
+                     <children>
+                        <Button fx:id="back" mnemonicParsing="false" onAction="#back" text="Back">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="clear" mnemonicParsing="false" onAction="#clear" text="Clear">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="check" mnemonicParsing="false" onAction="#check" text="Check Remaining Key Size">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Button>
+                     </children>
+                     <padding>
+                        <Insets top="5.0" />
+                     </padding>
+                  </HBox>
+               </children>
+               <padding>
+                  <Insets top="5.0" />
+               </padding>
+            </VBox>
+         </bottom>
+      </BorderPane>
+   </children>
+</AnchorPane>
