@@ -95,10 +95,12 @@ and guassian/mean blurs on .png images.
 #### Method of action
 Mostly uses simple kernel convolution.
 
-guassian/mean blur - kernel convolution averaging values surrounding the pixel, gussian weighs the central pixels higher
+guassian/mean blur: kernel convolution averaging values surrounding the pixel, gussian weighs the central pixels higher
 which helps peserve edges.
-sobel edge detection - kernel convolution testing for x/y direction changes, that is creates a response when theres an edge.
-Canny edge detection - input is sobel, thins sobels edges ( finds local edge maximums and dulls the rest), then
+
+sobel edge detection: kernel convolution testing for x/y direction changes, that is creates a response when theres an edge.
+
+Canny edge detection: input is sobel, thins sobels edges ( finds local edge maximums and dulls the rest), then
 uses two threshholds of intensity, one determines which edges are kept, and the other determines which thresholds 
 are kept if they are in connection with a stronger edge.(Unfortunately my poor implementation tends to break things apart)  
 
