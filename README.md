@@ -51,7 +51,7 @@ If its working it should look like this :
 
 
 ## tic-tac-toe AI
- Play tic-tac-toe with an AI who learns
+Play tic-tac-toe with an AI who learns
 
 ##### Playing the game itself may require javaFX
 
