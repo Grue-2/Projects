@@ -82,26 +82,25 @@ public class AI {
 							     [state10][state11];
 	}
 
-	private int[][] stateDecoder(int state[][]) {
-		int temp[][] = new int[3][3];
-
-		for (int row = 0; row < 3; ++row)
-			for (int col = 0; col < 3; ++col)
-				if (state[row][col] == -1)
-					temp[row][col] = 2;
-				else
-					temp[row][col] = state[row][col];
-
-		return temp;
+	private int[][] stateDecoder(int codedState[][])
+	{
+		return new int[][]{
+			{(codedState[0][0]+3)%3,(codedState[0][1]+3)%3,(codedState[0][2]+3)%3},
+			{(codedState[1][0]+3)%3,(codedState[1][1]+3)%3,(codedState[1][2]+3)%3},
+			{(codedState[2][0]+3)%3,(codedState[2][1]+3)%3,(codedState[2][2]+3)%3},
+		};
 	}
-
+	
 	// state values are: 0 for empty 1 for X, 2 for O
 	public int[] makeMove(int state[][]) {
 		if (alive) {
+			
 			int decodedState[][] = stateDecoder(state);
-
-			int statePrefs[][] = currentMovePrefs[decodedState[0][0]][decodedState[0][1]][decodedState[0][2]][decodedState[1][0]][decodedState[1][1]][decodedState[1][2]][decodedState[2][0]][decodedState[2][1]][decodedState[2][2]];
-
+			
+			int statePrefs[][] = currentMovePrefs[decodedState[0][0]][decodedState[0][1]][decodedState[0][2]]
+												 [decodedState[1][0]][decodedState[1][1]][decodedState[1][2]]
+												 [decodedState[2][0]][decodedState[2][1]][decodedState[2][2]];
+			
 			int maxPrefRating = Integer.MIN_VALUE;
 
 			for (int row = 0; row < 3; ++row)
@@ -127,6 +126,9 @@ public class AI {
 			return null;
 	}
 
+	// Has an overflow risk. In theory it should stop losing before
+	// it occurs, and its executed enough times that the checks
+	// slow training down. But it does concern me.
 	public synchronized void gameOver(int gameResult) {
 		if (alive && gameResult == -1) {
 
@@ -140,21 +142,16 @@ public class AI {
 			loadedMovePrefs[secondToLastMove.state[0][0]][secondToLastMove.state[0][1]][secondToLastMove.state[0][2]]
 					[secondToLastMove.state[1][0]][secondToLastMove.state[1][1]][secondToLastMove.state[1][2]]
 					[secondToLastMove.state[2][0]][secondToLastMove.state[2][1]][secondToLastMove.state[2][2]]
-					[secondToLastMove.choice/ 3][secondToLastMove.choice % 3] -= 10;
+					[secondToLastMove.choice/ 3][secondToLastMove.choice % 3] -= 1;
 		}
 		else if (alive && gameResult == 1)
 		{
-			Move lastMove = movesMade.get(movesMade.size() - 1), secondToLastMove = movesMade.get(movesMade.size() - 2);
+			Move lastMove = movesMade.get(movesMade.size() - 1);
 
 			loadedMovePrefs[lastMove.state[0][0]][lastMove.state[0][1]][lastMove.state[0][2]]
 							[lastMove.state[1][0]][lastMove.state[1][1]][lastMove.state[1][2]]
 							[lastMove.state[2][0]][lastMove.state[2][1]][lastMove.state[2][2]]
 							[lastMove.choice/ 3][lastMove.choice % 3] += 1;
-
-			loadedMovePrefs[secondToLastMove.state[0][0]][secondToLastMove.state[0][1]][secondToLastMove.state[0][2]]
-					[secondToLastMove.state[1][0]][secondToLastMove.state[1][1]][secondToLastMove.state[1][2]]
-					[secondToLastMove.state[2][0]][secondToLastMove.state[2][1]][secondToLastMove.state[2][2]]
-					[secondToLastMove.choice/ 3][secondToLastMove.choice % 3] += 1;
 		}
 
 		alive = false;
