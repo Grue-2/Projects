@@ -33,15 +33,17 @@ The scripts interface with the HRNG which spits out etnropy bits. While the HRNG
 whitens its output, the scripts default setting will von Neumann the output again
 just in case.
 
-Those spit out entropy bits are stored in a buffer then written to a keyfile.
+Those spit out entropy bits are stored in a buffer then written to keyfiles.
 
 ### User guide
 
-Plug in your TrueRNG3 USB, check which COM port its connected to. (google how)
+Plug in your TrueRNG3 USB, check which COM port its connected to. (google how) 
+Change the RNG_PORT constant to match your TrueRNG3's COM port.
 Compile TrueRNGKeyGen.cpp together with TrueRNGInterface.h. (the later is not my code)
 
 run code where you want the key files to be generated.
 
+The folder contains an example key file.
 
 If its working it should look like this :
 

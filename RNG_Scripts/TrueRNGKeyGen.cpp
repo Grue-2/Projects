@@ -1,7 +1,7 @@
 /*
 JC
 
-10/26/2017 - clean for github update
+10/28/2017 - clean for github update
 
 (This script uses a header I got from
 //Source: http://ubld.it/wp-content/uploads/2014/02/rng.h )
