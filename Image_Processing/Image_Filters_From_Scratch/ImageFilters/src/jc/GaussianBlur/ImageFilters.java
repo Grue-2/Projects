@@ -1,3 +1,11 @@
+/*
+JC
+
+10/28/2017
+
+Cleaning for github update
+ */
+
 package jc.GaussianBlur;
 
 import java.awt.Graphics;
@@ -15,30 +23,34 @@ import java.util.List;
 
 import javax.imageio.ImageIO;
 import javax.swing.GrayFilter;
-	/*
-	 * Failed project, needs to be on intensity, even with grayscale im still
-	 * blurring rgb together, neat results but not exactly what I wanted to do
-	 * 
-	 */
 
+/*
+Unlike a lot of the other uploads, this is won't do what you want
+out of the tin. The algorithms work but they need a quite a bit of
+number tweaking on the settings to get them to do what you probably
+wanted.
 
-	//ImageIO.read(new File("src/Images/name.png"));
+Mind you I wrote these from a description of an idea, they won't 
+be efficient or even good algorithms.
+
+In the Images folder are a couple examples of end results with some tweaking.
+ */
 public class ImageFilters {
 	private static final int pixelB=(255<<24)|(0<<16)|(0<<8)|0;
-	private static final int pixelW=(0<<24)|(255<<16)|(255<<8)|255; 
+	private static final int pixelW=(0<<24)|(255<<16)|(255<<8)|255;
+	
+	// What you want executed goes here as per usual.
 	public static void main(String[] args) throws IOException {
-		// chain: greyScale, gaussianBlur, sobbelEdgeDetection, cannyEdgeDetection, twolayer median
-		//layeredChain("dexter.png","dexterLayered5.png",.9,.85,3);// <-- current 
-		//layeredChain("fire.png","fireLayered2.png",.9,.85,3);// <-- don't blur
 		
+		/* example.
 		layeredChain(
-					 "src/Image/highRestest.png",
-					 "src/Image/edgeDetectionExample2.png",
-					  .995,
-					  .98,
-					  3,
-					  true
-					 );
+			 		 "src/Image/inputFileName.png",				Input file name
+					 "src/Image/outputFileName.png",		    Output file name
+					  0-1, (generally .8-.95'ish)				Median 1 for  2 median threshold filtering
+					  0-1, (generally a bit lower)				Median 2 for  2 median threshold filtering
+					  3,    									Number layers for 2 median threshold filtering 
+					  true										Blur option ( don't want to unless you need to connect gaps )
+					 );*/
 		
 	}
 	private static void layeredChain(String inputFilePath,String outputFilePath,double median1,double median2,int layers,boolean blur) throws IOException{
@@ -47,13 +59,9 @@ public class ImageFilters {
 		if(blur)gaussianBlur(outputFilePath,outputFilePath);
 		x=3;while(x-->0)gaussianBlur(outputFilePath,outputFilePath);
 		
-		//gaussianBlur(outputFilePath,outputFilePath);
 		sobelEdgeDetectionX(outputFilePath,"sobelXintermediate.png");
-		//sobelEdgeDetectionX("sobelXintermediate.png","sobelXintermediate.png");
 		sobelEdgeDetectionY(outputFilePath,"sobelYintermediate.png");
-		//sobelEdgeDetectionY("sobelYintermediate.png","sobelYintermediate.png");
 		sobelEdgeDetection(outputFilePath,outputFilePath);
-		//sobelEdgeDetection(outputFilePath,outputFilePath);
 		
 		x=4;while(x-->0){
 		partOneOfCannyEdgeDetector(outputFilePath,"sobelXintermediate.png","sobelYintermediate.png",outputFilePath);
@@ -85,7 +93,7 @@ public class ImageFilters {
 		BufferedImage sX=ImageIO.read(new File(sobelX));
 		BufferedImage sY=ImageIO.read(new File(sobelY));
 		int height=img.getHeight(),width=img.getWidth();
-		//BufferedImage result=new BufferedImage(width,height,BufferedImage.TYPE_INT_RGB);
+
 		for(int x=2;x<width-2;x++)for(int y=2;y<height-2;y++){
 			int directionX=sX.getRGB(x,y);
 			int directionY=sY.getRGB(x,y);
@@ -104,14 +112,6 @@ public class ImageFilters {
 						   ((findQuadrant(sX.getRGB(x,y-1),sY.getRGB(x,y-1))==0)||
 							 findQuadrant(sX.getRGB(x,y-1),sY.getRGB(x,y-1))==4)
 						   )
-//					 ||
-//					 ((img.getRGB(x,y+2)>img.getRGB(x,y))&&
-//							   ((findQuadrant(sX.getRGB(x,y+2),sY.getRGB(x,y+2))==0)||
-//								 findQuadrant(sX.getRGB(x,y+2),sY.getRGB(x,y+2))==4))
-//						 ||
-//						   ((img.getRGB(x,y-2)>img.getRGB(x,y))&&
-//							   ((findQuadrant(sX.getRGB(x,y-2),sY.getRGB(x,y-2))==0)||
-//								 findQuadrant(sX.getRGB(x,y-2),sY.getRGB(x,y-2))==4))
 					  )img.setRGB(x,y,pixelB);
 					break;
 				case 1:case 5:
@@ -126,14 +126,6 @@ public class ImageFilters {
 							   ((findQuadrant(sX.getRGB(x+1,y-1),sY.getRGB(x+1,y-1))==1)||
 								 findQuadrant(sX.getRGB(x+1,y-1),sY.getRGB(x+1,y-1))==5)
 							   )
-//						 ||
-//						 ((img.getRGB(x-2,y+2)>img.getRGB(x,y))&&
-//								   ((findQuadrant(sX.getRGB(x-2,y+2),sY.getRGB(x-2,y+2))==1)||
-//									 findQuadrant(sX.getRGB(x-2,y+2),sY.getRGB(x-2,y+2))==5))
-//							 ||
-//							   ((img.getRGB(x+2,y-2)>img.getRGB(x,y))&&
-//								   ((findQuadrant(sX.getRGB(x+2,y-2),sY.getRGB(x+2,y-2))==1)||
-//									 findQuadrant(sX.getRGB(x+2,y-2),sY.getRGB(x+2,y-2))==5))
 						  )img.setRGB(x,y,pixelB);
 					break;
 				case 2:case 6:
@@ -148,14 +140,6 @@ public class ImageFilters {
 							   ((findQuadrant(sX.getRGB(x+1,y),sY.getRGB(x+1,y))==2)||
 								 findQuadrant(sX.getRGB(x+1,y),sY.getRGB(x+1,y))==6)
 							   )
-//						 ||
-//						 ((img.getRGB(x-2,y)>img.getRGB(x,y))&&
-//								   ((findQuadrant(sX.getRGB(x-2,y),sY.getRGB(x-2,y))==2)||
-//									 findQuadrant(sX.getRGB(x-2,y),sY.getRGB(x-2,y))==6))
-//							 ||
-//							   ((img.getRGB(x+2,y)>img.getRGB(x,y))&&
-//								   ((findQuadrant(sX.getRGB(x+2,y),sY.getRGB(x+2,y))==2)||
-//									 findQuadrant(sX.getRGB(x+2,y),sY.getRGB(x+2,y))==6))
 						  )img.setRGB(x,y,pixelB);
 					break;
 				case 3:case 7:
@@ -170,14 +154,6 @@ public class ImageFilters {
 							   ((findQuadrant(sX.getRGB(x+1,y+1),sY.getRGB(x+1,y+1))==2)||
 								 findQuadrant(sX.getRGB(x+1,y+1),sY.getRGB(x+1,y+1))==6)
 							   )
-//						 ||
-//						 ((img.getRGB(x-2,y-2)>img.getRGB(x,y))&&
-//								   ((findQuadrant(sX.getRGB(x-2,y-2),sY.getRGB(x-2,y-2))==2)||
-//									 findQuadrant(sX.getRGB(x-2,y-2),sY.getRGB(x-2,y-2))==6))
-//							 ||
-//							   ((img.getRGB(x+1,y+1)>img.getRGB(x,y))&&
-//								   ((findQuadrant(sX.getRGB(x+2,y+2),sY.getRGB(x+2,y+2))==2)||
-//									 findQuadrant(sX.getRGB(x+2,y+2),sY.getRGB(x+2,y+2))==6))
 						  )img.setRGB(x,y,pixelB);
 					break;
 			}

@@ -51,7 +51,7 @@ If its working it should look like this :
 
 
 ## tic-tac-toe AI
- - Play tic tac toe with an AI
+ - Play tic-tac-toe with an AI who learns
 
 ##### Playing the game itself may require javaFX
 
@@ -78,4 +78,65 @@ gives a nice tic tac toe game.
 
 
 ![alt text](/images/ticTacToe_Example.png "tic-tac-toe example image")
+
+## Image_Processing - edge detection / visualizing random data
+
+### Image Filters - Canny edge dectection, twoMedianThresholdFiltering, sobel edge detection, guassian/mean blur
+
+#### Preface
+Computerphile did a cool video https://www.youtube.com/watch?v=uihBwtPIBxM and some others on visual filters.
+The description of the algorithm seemed understandble enough that I figured why not try it.
+(Simple reason would be theres better work already done out there, but it's a learning process)
+
+#### Purpose
+Implements canny edge detection, two median threshold filtering, 
+sobel edge detection, and guassian/mean blurs on .png images.
+
+#### Method of action
+Mostly uses simple kernel convolution.
+
+Canny edge detection -
+two median threshold filtering -
+sobel edge detection -
+guassian/mean blur - 
+
+#### User guide
+
+Eclipse project, import into eclipse.
+Place images in the same folder as the demo images.
+Update main with function calls as you wish.
+Execute to generate resulting images.
+
+Unlike the other projects this one takes alot of tweaking function
+calls to get it to do what you want.
+
+(Also worth noting there are far far better ways to filter images
+than my play algorithms here.)
+
+Below is an example of what these functions can do
+
+##### before:
+
+![alt text](/images/before.png "filter example image")
+
+##### after:
+
+![alt text](/images/after.png "filter example image")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
