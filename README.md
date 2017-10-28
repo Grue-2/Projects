@@ -5,7 +5,7 @@ in sync with what I'd love to learn.
 
 ## RNG_Scripts
 
-###Preface
+### Preface
 Getting access to effectively random numbers is not easy.
 
 Sites like Random.org while effective have caps for free entropy, and also record
@@ -15,7 +15,7 @@ While I don't know enough currently to verify the efficacy of hardware random nu
 generators(HRNGs) I figured playing with one would be a good learning experience
 regardless.
 
-###Purpose
+### Purpose
 
 These scripts are for creating binary files filled with entropy generated from
 a "TrueRNG3" HRNG. With the intended goal of producing cryptographically useful
@@ -27,7 +27,7 @@ in an important situation. However for test purposes the keys generated have bee
 good thus far.
 
 
-###Method of action
+### Method of action
 
 The scripts interface with the HRNG which spits out etnropy bits. While the HRNG claims it
 whitens its output, the scripts default setting will von Neumann the output again
@@ -35,7 +35,7 @@ just in case.
 
 those spit out bits are stored in a buffer then written to a keyfile.
 
-###User guide
+### User guide
 
 Plug in your TrueRNG3 USB, check which COM port its connected to. (google how)
 Compile TrueRNGKeyGen.cpp together with TrueRNGInterface.h. (the later is not my code)
@@ -53,20 +53,20 @@ If its working it should look like this :
 
 ##### Playing the game itself may require javaFX
 
-###Preface
+### Preface
 I don't know anything about AI. Figured I'd write a naive AI for fun.
 
-###Purpose
+### Purpose
 This is sort of a proof of concept. The AI knows nothing about how tic-tac-toe works
 to start with other than it can't make invalid moves. After being trained for a while
 it can play a decent game of tic-tac-toe.
 
-###Method of action
+### Method of action
 
 The AI stores current game state, compares it against its memory of outcomes in those
 game states, then takes its preffered action. Based on the game result it adjusts its preferences.
 
-###User guide
+### User guide
 
 Eclipse project, import into eclipse.
 The AI has its memory in preferences.ser. You can delete them and retrain executing
