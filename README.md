@@ -1,10 +1,7 @@
 # Projects designating interests of mine
 
 These are projects whose broad themes are 
-in sync with what I'd love to learn.
-
-TODO: table of contents with links as scope gets larger. Or do the normal thing
-and break this into different repositories
+in sync with what I intend to learn more about.
 
 ## RNG_Scripts - generate cryptographic keys with a TrueRNGv3
 
@@ -82,7 +79,7 @@ gives a nice tic tac toe game.
 
 ![alt text](/images/ticTacToe_Example.png "tic-tac-toe example image")
 
-## Image_Processing - edge detection / visualizing random data
+## Image_Processing - edge detection
 
 ### Image Filters - Canny edge dectection, sobel edge detection, guassian/mean blur
 
@@ -143,7 +140,7 @@ But it occured to me that theres nothing really stopping users from
 just encrypting things on their own other than the hassle.
 
 So I figured why not make a chat program that made it easy for friends
-to talk on end to end encrypted lines.
+to encrypt their chats through normally unencrypted lines.
 
 #### Purpose
 Chat program for my friends and family to communicate that doesn't require
@@ -193,6 +190,66 @@ if you want your encrypted messages to show up in the discord chat log.
 
 (New RSA key generated when you hit the "chat" Button)
 
+## Encryption
+
+### OTP_With_Integrity_Attempt - scramble(one time pad(hash(message) + message))
+
+(note: padding out the message to a set length could be done, but the major limiter
+for me was entropy bits. So I limited the number of characters in a message to a 6bit set 
+and did not padd out message lengths).
+
+#### Preface
+Despite having perfect secrecy one time pading does not provide any checks for
+message integrity.
+
+#### Purpose
+The idea here is to scramble the message using numbers off the key material after hashing
+in order to make attempts to change the original message very difficult to hide. That is
+it attempts to add message integrity to the encrypted message.
+
+#### Method of action
+encryption: scramble(one time pad(hash(message) + message))
+
+The hash is a java sha1.
+The one time pad is just xor (or in this case bi-conditional).
+The scramble uses rejection sampling to generate numbers to scramble the message.
+Then the encryption is wrapped in a javaFX gui for ease of use.
+
+#### User guide
+
+Eclipse project, import into eclipse or what have you.
+Main has the main method to run.
+Once it runs it should look like this:
+
+![alt text](/images/otpStart.png "filter example image")
+
+The key material the program uses is binary strings.
+
+To use real keys have the key material as binary strings. The slot
+next to "Key you" is used for encrypt, and "Key them" is used to decrypt.
+
+If you want encrypt something place it in the slot next to the encrypt button
+then press encrypt, vice versa for decrypt.
+
+If the message has been tampered with there is a high probability it did not match
+the hash change as well and it will give you the message below:
+
+![alt text](/images/notvalid.png "filter example image")
+
+Keep in mind that once something is invalid the keys will fall out of sync,
+and any further attempts tend to stay invalid (unless you readjust the keys).
+
+As a note the program saves the binary keys when you "x" out of it.
+And the keys that it comes with are not random.
+
+
+- stetanography
+
+- cryptographic key manager
+
+- go back up and do table of contents
+
+- change the image links to have alttext / have actual names
 
 
 
