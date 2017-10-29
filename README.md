@@ -50,8 +50,8 @@ If its working it should look like this :
 ![alt text](/images/rngScript_Example.png "Rng example image")
 
 
-## tic-tac-toe AI
- - Play tic-tac-toe with an AI who learns
+## ticTacToe AI
+ - Play ticTacToe with an AI who learns
 
 ##### Playing the game itself may require javaFX
 
@@ -76,8 +76,10 @@ the main method in AI_Trainer.java (is not optimized).
 Or just to test the AI you can run the main method in "TicTacToeGame.java" which
 gives a nice tic tac toe game.
 
-
 ![alt text](/images/ticTacToe_Example.png "tic-tac-toe example image")
+
+(AI only learns from player games if you close it with the x button, if you hard stop it
+with eclipse it won't remember the games you played during that programs execution)
 
 ## Image_Processing - edge detection
 
@@ -128,9 +130,9 @@ Below is an example of what these functions can do
 ![alt text](/images/after.png "filter example image")
 
 
-## Encrypted Chat Programs - Direct or through discord
+## Chat Programs 
 
-### RSA Discord chat
+### RSA Discord chat - Adding RSA to discord chats
 
 #### Preface
 Theres a hassle associated with moving from platform to platform
@@ -243,9 +245,13 @@ As a note the program saves the binary keys when you "x" out of it.
 And the keys that it comes with are not random.
 
 
+
+
 - stetanography
 
 - cryptographic key manager
+
+- netrunner
 
 - go back up and do table of contents
 
