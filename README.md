@@ -148,7 +148,7 @@ to talk on end to end encrypted lines.
 #### Purpose
 Chat program for my friends and family to communicate that doesn't require
 encryption knowledge but still does end to end encryption done on user side 
-over free easy to use online chat program.
+over a free easy to use online chat program like discord.
 
 #### Method of action
 Uses a java discord bot library to interface with discord.
