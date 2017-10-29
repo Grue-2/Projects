@@ -3,6 +3,9 @@
 These are projects whose broad themes are 
 in sync with what I'd love to learn.
 
+TODO: table of contents with links as scope gets larger. Or do the normal thing
+and break this into different repositories
+
 ## RNG_Scripts - generate cryptographic keys with a TrueRNGv3
 
 ### Preface
@@ -51,7 +54,7 @@ If its working it should look like this :
 
 
 ## tic-tac-toe AI
-Play tic-tac-toe with an AI who learns
+ - Play tic-tac-toe with an AI who learns
 
 ##### Playing the game itself may require javaFX
 
@@ -128,9 +131,66 @@ Below is an example of what these functions can do
 ![alt text](/images/after.png "filter example image")
 
 
+## Encrypted Chat Programs - Direct or through discord
+
+### RSA Discord chat
+
+#### Preface
+Theres a hassle associated with moving from platform to platform
+in order to chat. And theres an issue with major platforms getting
+pressured to remove or break end to end encryptions. 
+But it occured to me that theres nothing really stopping users from 
+just encrypting things on their own other than the hassle.
+
+So I figured why not make a chat program that made it easy for friends
+to talk on end to end encrypted lines.
+
+#### Purpose
+Chat program for my friends and family to communicate that doesn't require
+encryption knowledge but still does end to end encryption done on user side 
+over free easy to use online chat program.
+
+#### Method of action
+Uses a java discord bot library to interface with discord.
+Uses with java.security's RSA implementation.
+And a javaFX gui to provide an easy interface to have encrypted chats.
+
+#### User guide
+
+(Sadly not as portable or easy to use as a chrome extension would of been
+in retrospect).
+
+Also note this program requires your discord token (which is essentially your login
+information) so either read through the code your running or know that your trusting
+that I did not write anything malicious in the code.
+
+Anyways.
+
+Firstly, you need a discord account. 
+Secondly add the person you want to have encrypted chats with to your friends list on discord.
+Then its an eclipse project so import that into eclipse or what have you.
+
+When its running it should look like this
+
+![alt text](/images/LoginScreen.png "filter example image")
+
+Instructions for how to find your discord token can be found here:
+https://github.com/TheRacingLion/Discord-SelfBot/wiki/Discord-Token-Tutorial
+
+Fill in the three fields labeled in red, then hit Chat.
+
+If everything is going according to plan it should look like the image below
+
+![alt text](/images/chatScene.png "filter example image")
 
 
+If your getting the error "Can't chat till they send you their key." have your friend
+hit establish key.
 
+Clear clears the chatlog, and the Delete Msg's toggle button near the top changes
+if you want your encrypted messages to show up in the discord chat log.
+
+(New RSA key generated when you hit the "chat" Button)
 
 
 
