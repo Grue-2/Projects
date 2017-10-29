@@ -25,7 +25,7 @@
                         <Font size="36.0" />
                      </font>
                   </Label>
-                  <CheckBox fx:id="deleteMessages" mnemonicParsing="false" onAction="#deleteMessages" text="Delete Msg's">
+                  <CheckBox fx:id="deleteMessages" mnemonicParsing="false" onAction="#deleteMessages" selected="true" text="Delete Msg's">
                      <font>
                         <Font size="24.0" />
                      </font>

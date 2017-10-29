@@ -183,6 +183,7 @@ If everything is going according to plan it should look like the image below
 
 ![alt text](/images/chatScene.png "filter example image")
 
+Enter button sends stuff from input into the chat.
 
 If your getting the error "Can't chat till they send you their key." have your friend
 hit establish key.
@@ -191,8 +192,6 @@ Clear clears the chatlog, and the Delete Msg's toggle button near the top change
 if you want your encrypted messages to show up in the discord chat log.
 
 (New RSA key generated when you hit the "chat" Button)
-
-
 
 
 
