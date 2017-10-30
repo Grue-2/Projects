@@ -13,8 +13,8 @@ in sync with what I intend to learn more about.
 6. [Basic Steganography](#6)
 7. [Key Manager](#7)
 
-
-## RNG_Scripts - generate cryptographic keys with a TrueRNGv3 <a name="1"></a>
+<a name="1"></a>
+## RNG_Scripts - generate cryptographic keys with a TrueRNGv3 
 
 ### Preface
 Getting access to effectively random numbers is not easy.
@@ -60,9 +60,9 @@ If its working it should look like this :
 
 ![alt text](/images/rngScript_Example.png "Rng example image")
 
-
+<a name="2"></a>
 ## ticTacToe AI
- - Play ticTacToe with an AI who learns <a name="2"></a>
+ - Play ticTacToe with an AI who learns 
 
 ##### Playing the game itself may require javaFX
 
@@ -92,7 +92,8 @@ gives a nice tic tac toe game.
 (AI only learns from player games if you close it with the x button, if you hard stop it
 with eclipse it won't remember the games you played during that programs execution)
 
-## Image_Processing - edge detection <a name="3"></a>
+<a name="3"></a>
+## Image_Processing - edge detection 
 
 ### Image Filters - Canny edge dectection, sobel edge detection, guassian/mean blur
 
@@ -140,8 +141,8 @@ Below is an example of what these functions can do
 
 ![alt text](/images/after.png "filter example image")
 
-
-## Chat Programs <a name="4"></a>
+<a name="4"></a>
+## Chat Programs 
 
 ### RSA Discord chat - Adding RSA to discord chats
 
@@ -204,8 +205,8 @@ if you want your encrypted messages to show up in the discord chat log.
 (New RSA key generated when you hit the "chat" Button)
 
 ## Encryption
-
-### OTP_With_Integrity_Attempt - scramble(one time pad(hash(message) + message)) <a name="5"></a>
+<a name="5"></a>
+### OTP_With_Integrity_Attempt - scramble(one time pad(hash(message) + message)) 
 
 (note: padding out the message to a set length could be done, but the major limiter
 for me was entropy bits. So I limited the number of characters in a message to a 6bit set 
@@ -255,8 +256,8 @@ and any further attempts tend to stay invalid (unless you readjust the keys).
 As a note the program saves the binary keys when you "x" out of it.
 And the keys that it comes with are not random.
 
-
-### Basic Steganography - hide messages in pictures <a name="6"></a>
+<a name="6"></a>
+### Basic Steganography - hide messages in pictures 
 
 #### Preface
 When I first started playing with random generators I wanted to find a way
@@ -313,8 +314,8 @@ fill out the text box with what you want to write then hit write.
 
 ( If the text doesn't change it either doesn't have a message in the picture
 or something went wrong )
-
-- cryptographic key manager <a name="7"></a>
+<a name="7"></a>
+- cryptographic key manager 
 
 
 
