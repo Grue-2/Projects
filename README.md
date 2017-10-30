@@ -245,19 +245,72 @@ As a note the program saves the binary keys when you "x" out of it.
 And the keys that it comes with are not random.
 
 
+### Basic Steganography - hide messages in pictures
+
+#### Preface
+When I first started playing with random generators I wanted to find a way
+to visuallize the data to look for a pattern. While visualizing was really  useful
+for finding when I made huge mistakes in generation, the ability to inspect
+by eye wasn't paticularlly useful. 
+
+Well okay that meant that information could be hidden in noise fairly easily.
+
+So I played with it a bit
+
+![alt text](/images/secureRandom.png "filter example image")
+
+And then tried to hide things in pictures that were less obviously noise
+
+![alt text](/images/notquite.png "filter example image")
+
+to a bit less effect. But with a few minor changes to encoding
+
+![alt text](/images/output.png "filter example image")
+
+its quite a bit harder to detect. And the information which gets
+encoded can be scrambled/encrypted/have its location matched to the picture
+or randomized with a key etc...
+
+That is various other techniques can be applied to it.
+
+#### Purpose
+This program hides data in a regularlized way without any frills. The purpose
+was to see just to demonstrate how little is required to hide information in noise.
+
+From a user standpoint you could text information in a picture for fun.
+
+#### Method of action
+The program encodes each bit of a message as a comparison between a pixel and its neighbor.
+And pulls it back the same way.
+
+#### User guide
+Eclipse project, import or what have you.
+Main has the main method, run it.
 
 
-- stetanography
+![alt text](/images/stegEG.png "filter example image")
+
+Press load image to bring up a menu 
+
+![alt text](/images/instruction.png "filter example image")
+
+select an image to either write to or read from.
+
+Then hit read to read whats on the image already or
+fill out the text box with what you want to write then hit write.
+
+( If the text doesn't change it either doesn't have a message in the picture
+or something went wrong )
 
 - cryptographic key manager
 
-- netrunner
-
-- go back up and do table of contents
+- go back up and do table of contents ( or change things to their own repository 
+like a reasonable human being)
 
 - change the image links to have alttext / have actual names
 
-
+- make sure steganography tool diddn't leave anything in my uploaded pictures that
+I don't want to be there.
 
 
 
