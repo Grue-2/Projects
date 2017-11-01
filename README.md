@@ -62,7 +62,7 @@ If its working it should look like this :
 
 <a name="2"></a>
 ## Machine learning ticTacToe AI
- - Play ticTacToe with a learning AI
+ -Play ticTacToe with a learning AI
 
 ##### Playing the game itself may require javaFX
 
