@@ -3,6 +3,9 @@
 These are projects whose broad themes are 
 in sync with what I intend to learn more about.
 
+Note: I'm quite new to these subjects, please don't
+take anything I do here as secure in any way shape or form.
+
 # Table of contents
 
 1. [RNG_Scripts](#1)
