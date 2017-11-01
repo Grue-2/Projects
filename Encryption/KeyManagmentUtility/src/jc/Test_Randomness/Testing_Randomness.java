@@ -238,7 +238,7 @@ public class Testing_Randomness {
 		DecimalFormat twoPlaces = new DecimalFormat("#0.00");
 
 		double alpha[] = new double[] { 14.067, 24.996, 36.415 };
-
+		
 		System.out.println(m + " bit test result : " + twoPlaces.format(chi) + " < " + twoPlaces.format(alpha[m - 3])
 				+ "? " + (chi < alpha[m - 3]));
 		return (chi < alpha[m - 3]);
@@ -259,6 +259,7 @@ public class Testing_Randomness {
 
 		// 1.96
 		DecimalFormat twoPlaces = new DecimalFormat("#0.00");
+		chi = Math.abs(chi);
 		System.out.println(d + " shifted Autocorrelation test : " + twoPlaces.format(chi) + " < 1.96? " + (chi < 1.96));
 		return (chi < 1.96);
 	}
@@ -316,7 +317,8 @@ public class Testing_Randomness {
 		// k for expected key size is 46 , DF = 44 --> alpha .05 = 60.481
 
 		DecimalFormat twoPlaces = new DecimalFormat("#0.00");
-		System.out.println("Runs test result : " + twoPlaces.format(chi) + " < 9.49? " + (chi < 60.481));
+		chi = Math.abs(chi);
+		System.out.println("Runs test result : " + twoPlaces.format(chi) + " < 60.481? " + (chi < 60.481));
 		return (chi < 60.481);
 	}
 
