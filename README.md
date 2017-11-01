@@ -377,11 +377,11 @@ This github upload has two key files KeyFile1c and KeyFile2c for testing.
 
 
 Things to keep in mind :
-The program deletes keys on use.
-The program deletes keys on errors.
-The program saves the key as a plain text binary string file.
-The program deletes text out of that file as key material is used out of that.
-Key material in the key field is saved between sessions, also as a plain text file.
+- The program deletes keys on use.
+- The program deletes keys on errors.
+- The program saves the key as a plain text binary string file.
+- The program deletes text out of that file as key material is used out of that.
+- Key material in the key field is saved between sessions, also as a plain text file.
 
 
 
