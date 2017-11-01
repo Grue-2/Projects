@@ -66,7 +66,8 @@ public class KeyEater {
 		int buf;
 		long i = 0;
 		while ((buf = fs.read()) != -1) {
-			pw.append(byteToString((byte) buf));
+		
+			pw.append(byteToString(buf));
 			if (++i % 1000000 == 0)
 				System.out.println(i / 1000000 + "e6 bytes expanded so far.");
 		}
@@ -77,7 +78,7 @@ public class KeyEater {
 		return GOOD;
 	}
 
-	private static String byteToString(byte b) {
+	private static StringBuilder byteToString(int b) {
 		StringBuilder result = new StringBuilder();
 
 		int place = 8, mask = 128;
@@ -87,7 +88,7 @@ public class KeyEater {
 			mask /= 2;
 		}
 		result.append("\n");
-		return result.toString();
+		return result;
 	}
 }
 
