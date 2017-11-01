@@ -1,3 +1,11 @@
+/*
+JC
+
+10/29/2017
+
+No-func version. - clean
+ */
+
 package steganography_attempt;
 
 import java.awt.image.BufferedImage;
