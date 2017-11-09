@@ -1,4 +1,4 @@
-<a name="8"></a>
+<a name="top"></a>
 # Projects designating interests of mine
 
 These are projects whose broad themes are 
@@ -64,7 +64,7 @@ If its working it should look like this :
 
 ![alt text](/images/rngScript_Example.png "Rng example image")
 
-[to top](#8)
+[to top](#top)
 
 <a name="2"></a>
 ## Machine learning ticTacToe AI
@@ -98,7 +98,7 @@ gives a nice tic tac toe game.
 (AI only learns from player games if you close it with the x button, if you hard stop it
 with eclipse it won't remember the games you played during that programs execution)
 
-[to top](#8)
+[to top](#top)
 
 <a name="3"></a>
 ## Image_Processing - edge detection 
@@ -149,7 +149,7 @@ Below is an example of what these functions can do
 
 ![alt text](/images/after.png "filter example image")
 
-[to top](#8)
+[to top](#top)
 
 <a name="4"></a>
 ## Chat Programs 
@@ -214,7 +214,7 @@ if you want your encrypted messages to show up in the discord chat log.
 
 (New RSA key generated when you hit the "chat" Button)
 
-[to top](#8)
+[to top](#top)
 
 ## Encryption
 <a name="5"></a>
@@ -268,7 +268,7 @@ and any further attempts tend to stay invalid (unless you readjust the keys).
 As a note the program saves the binary keys when you "x" out of it.
 And the keys that it comes with are not random.
 
-[to top](#8)
+[to top](#top)
 
 <a name="6"></a>
 ### Basic Steganography - hide messages in pictures 
@@ -329,7 +329,7 @@ fill out the text box with what you want to write then hit write.
 ( If the text doesn't change it either doesn't have a message in the picture
 or something went wrong )
 
-[to top](#8)
+[to top](#top)
 
 <a name="7"></a>
 ### Cryptographic key manager - Single button key managment
@@ -399,7 +399,7 @@ Things to keep in mind :
 - The program deletes text out of that file as key material is used out of that.
 - Key material in the key field is saved between sessions, also as a plain text file.
 
-[to top](#8)
+[to top](#top)
 
 
 
