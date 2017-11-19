@@ -13,9 +13,10 @@ take anything I do here as secure in any way shape or form.
 2. [ticTacToe AI](#2)
 3. [Image_Processing - edge detection](#3)
 4. [RSA Discord chat](#4)
-5. [OTP_With_Integrity_Attempt](#5)
-6. [Basic Steganography](#6)
-7. [Cryptographic Key Manager](#7)
+5. [RSA peer chat](#8)
+6. [OTP_With_Integrity_Attempt](#5)
+7. [Basic Steganography](#6)
+8. [Cryptographic Key Manager](#7)
 
 <a name="1"></a>
 ## RNG_Scripts - generate cryptographic keys with a TrueRNGv3 
@@ -213,6 +214,38 @@ Clear clears the chatlog, and the Delete Msg's toggle button near the top change
 if you want your encrypted messages to show up in the discord chat log.
 
 (New RSA key generated when you hit the "chat" Button)
+
+[to top](#top)
+
+<a name="8"></a>
+### RSA chat - plain RSA encrypted chat direct tcp
+
+#### Preface
+If discord doesn't happen to be convenient or down like it was today this
+simple program lets you TCP to a friend, requires port forwarding to host if
+you are behind a router.
+
+#### Purpose
+Allows java.security RSA encryption for plain text chatting through a direct
+TCP connection to a friend.
+
+#### Method of action
+java.net and java.security along with javaFX to create a simple
+encrypted chat program.
+
+#### User guide
+
+Eclipse project, might need to clean or rebuild.
+
+![alt text](/images/rsaChat1.png "RSA chat 1")
+
+Looks like the above. Hit host to host, otherwise fill in fields and hit connect.
+
+![alt text](/images/rsaChat2.png "RSA chat 2")
+
+If all went well it should look like below:
+
+![alt text](/images/rsaChat3.png "RSA chat 2")
 
 [to top](#top)
 
