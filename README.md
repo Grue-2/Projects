@@ -326,7 +326,7 @@ to a bit less effect. But with a few minor changes to encoding
 
 ![alt text](/images/output.png "filter example image")
 
-its quite a bit harder to detect. And the information which gets
+its quite a bit harder to detect by plain sight. And the information which gets
 encoded can be scrambled/encrypted/have its location matched to the picture
 or randomized with a key etc...
 
