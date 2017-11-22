@@ -235,7 +235,7 @@ encrypted chat program.
 
 #### User guide
 
-Eclipse project, might need to clean or rebuild.
+Eclipse project, might need to clean or rebuild. (update: should have been fixed)
 
 ![alt text](/images/rsaChat1.png "RSA chat 1")
 
