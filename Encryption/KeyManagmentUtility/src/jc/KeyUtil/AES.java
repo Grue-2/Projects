@@ -24,25 +24,24 @@ import javax.crypto.Cipher;
 import javax.crypto.KeyGenerator;
 import javax.crypto.SecretKey;
 
-public interface AES {
-	// public static void main(String...args) throws NoSuchAlgorithmException,
-	// FileNotFoundException, IOException, InvalidKeyException,
-	// ClassNotFoundException, BadPaddingException
-	// {
-	// //encrypt("KeyFile2", "KeyFile2c");
-	// //encrypt("KeyFile1", "KeyFile1c");
-	// }
-
+public final class AES {
+	private static final int KEY_SIZE_IN_BITS = 128; //untested change
+	private AES(){}
+	
 	public static void generateAESKeyFile() throws NoSuchAlgorithmException, FileNotFoundException, IOException {
-		SecureRandom rng = new SecureRandom();
+		SecureRandom rng = SecureRandom.getInstanceStrong(); 
+		// random vs u random
 		rng.nextBytes(new byte[20]);
+
 		KeyGenerator gen = KeyGenerator.getInstance("AES");
-		gen.init(128, rng);
+		gen.init(KEY_SIZE_IN_BITS, rng);
 		SecretKey key = gen.generateKey();
+
 		ObjectOutputStream writer = new ObjectOutputStream(new java.io.FileOutputStream(new File("AESKey.bin")));
 		writer.writeObject(key);
 		writer.close();
 	}
+
 
 	public static SecretKey getAESKey() throws FileNotFoundException, IOException, ClassNotFoundException {
 		ObjectInputStream reader = new ObjectInputStream(new java.io.FileInputStream(new File("AESKey.bin")));

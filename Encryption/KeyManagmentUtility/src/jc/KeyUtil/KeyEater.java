@@ -40,13 +40,12 @@ public class KeyEater {
 			if (f.toString().contains("KeyFile") && !f.toString().contains("asBinaryString")) {
 				bad = false;
 				input = f;
+				break; // TODO: untested change
 			}
-			if (!bad)
-				break;
 		}
-		if (bad) {
+		if (bad) 
 			return NO_BINARY_KEY;
-		}
+		
 		// Decrypt AES during key eating process
 		try {
 			AES.decrypt(input.toString(), "temp.bin");
