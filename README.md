@@ -487,15 +487,15 @@ Things to keep in mind :
 (I don't own the rights to any of the media so I just uploaded code for the visual.)
 I am kinda proud of how it turned out though.
 
-![alt text](/images/netrun1.png "filter example image")
+![alt text](/images/netrun1.PNG "filter example image")
 
-![alt text](/images/netrun2.png "filter example image")
+![alt text](/images/netrun2.PNG "filter example image")
 
 below is the MUD I made before I knew any GUI programming.
 
-![alt text](/images/mudrunner.png "filter example image")
+![alt text](/images/mudrunner.PNG "filter example image")
 
-![alt text](/images/mudrunner2.png "filter example image")
+![alt text](/images/mudrunner2.PNG "filter example image")
 
 [to top](#top)
 
