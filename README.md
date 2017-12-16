@@ -14,9 +14,10 @@ take anything I do here as secure in any way shape or form.
 3. [Image_Processing - edge detection](#3)
 4. [RSA Discord chat](#4)
 5. [RSA peer chat](#8)
-6. [OTP_With_Integrity_Attempt](#5)
-7. [Basic Steganography](#6)
-8. [Cryptographic Key Manager](#7)
+6. [OTP Server Client Chat](#9)
+7. [OTP_With_Integrity_Attempt](#5)
+8. [Basic Steganography](#6)
+9. [Cryptographic Key Manager](#7)
 
 <a name="1"></a>
 ## RNG_Scripts - generate cryptographic keys with a TrueRNGv3 
@@ -246,6 +247,46 @@ Looks like the above. Hit host to host, otherwise fill in fields and hit connect
 If all went well it should look like below:
 
 ![alt text](/images/rsaChat3.png "RSA chat 2")
+
+[to top](#top)
+
+<a name="9"></a>
+### OTP client/server chat - OTP encrypted chat client and server
+
+#### Preface
+Its actually horribly inconvenient to leave chat clients running all the time.
+Friend has a static IP and I figured it'd be nice to have a chat sever which could
+store messages for later and dump them to the user on login.
+
+#### Purpose
+Server based chat setup that does end to end encryption.
+
+#### Method of action
+Homebrewed cryptographic keys (no gaurentee of efficacy) for key material.
+Uses one time padding with sha1 hasing and scrambling for the encryption scheme.
+javaFX for a simple client, and about the simplest chat server code I could do
+which did everything I wanted.
+
+#### User guide
+More of a personal use project really.
+
+Server set to port 55555 hardcoded, can change as a global constant in Chat_Server.java
+
+The program is meant to be run with keys I distributed to friends.
+An example is already in the eclipse file (with a backup) for demo purposes.
+
+Server side: adjust port (Chat_Server.java), run server.
+
+Client side: code in servers IP(Client.java), run client.
+
+The person your talking with should have your handle as their target, and your target
+should be their handle.
+
+With the server running you can leave messages and the server will dump them to your target
+when they log in.
+
+If anything goes wrong keys get out of line, goodluck.
+
 
 [to top](#top)
 
