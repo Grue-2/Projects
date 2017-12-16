@@ -18,6 +18,7 @@ take anything I do here as secure in any way shape or form.
 7. [OTP_With_Integrity_Attempt](#5)
 8. [Basic Steganography](#6)
 9. [Cryptographic Key Manager](#7)
+10 [Misc.](#10)
 
 <a name="1"></a>
 ## RNG_Scripts - generate cryptographic keys with a TrueRNGv3 
@@ -254,7 +255,7 @@ If all went well it should look like below:
 ### OTP client/server chat - OTP encrypted chat client and server
 
 #### Preface
-Its actually horribly inconvenient to leave chat clients running all the time.
+It's actually horribly inconvenient to leave chat clients running all the time.
 Friend has a static IP and I figured it'd be nice to have a chat sever which could
 store messages for later and dump them to the user on login.
 
@@ -285,7 +286,11 @@ should be their handle.
 With the server running you can leave messages and the server will dump them to your target
 when they log in.
 
+It will lag on first login.
+(You can comment out statistical testing in the client to make it not lag on first login)
+
 If anything goes wrong keys get out of line, goodluck.
+
 
 
 [to top](#top)
@@ -475,5 +480,21 @@ Things to keep in mind :
 
 [to top](#top)
 
+<a name="10"></a>
+## Game projects I did for fun 
 
+(I don't own the rights to any of the media so I just uploaded code for the visual.)
+I am kinda proud of how it turned out though.
+
+![alt text](/images/netrun1.png "filter example image")
+
+![alt text](/images/netrun2.png "filter example image")
+
+below is the MUD I made before I knew any GUI programming.
+
+![alt text](/images/mudrunner.png "filter example image")
+
+![alt text](/images/mudrunner2.png "filter example image")
+
+[to top](#top)
 
