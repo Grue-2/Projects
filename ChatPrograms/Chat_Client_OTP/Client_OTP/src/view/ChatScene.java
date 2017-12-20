@@ -105,8 +105,9 @@ public class ChatScene {
 					} catch(IntegrityException e){
 						chatWindow.appendText("\nMessage integrity problem has arisen.\n"
 											+ "Either keys are out of sync,\n"
-											+ "the connection is faltering or"
+											+ "the connection is faltering or\n"
 											+ "messages have been tampered with."+"\n");
+						break;
 						
 					} catch (NoSuchElementException e) {
 						chatWindow.appendText("Server connection lost.\nHit back and try again later.");

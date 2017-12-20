@@ -15,7 +15,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 import Model.Connection;
-import javafx.util.Pair;
+import Model.Pair;
 
 public class Chat_Server {
 	private static final int PORT_NUMBER = 55555;
@@ -53,69 +53,74 @@ public class Chat_Server {
 	}
 
 	private static void serverChatProtocol1(Socket soc) throws IOException, ClassNotFoundException {
-			Connection con = new Connection(soc);	
-		
-			// get handle & target
-			con.handle = (String) con.in.readObject(); 
-			con.target = (String) con.in.readObject();
-			
-			connections.add(con);
+		Connection con = new Connection(soc);
 
-			// catchup messages
-			try (ObjectInputStream backlogReader = new ObjectInputStream(
-					new FileInputStream(new File(con.handle + ".ser")));) {
-				List<Pair<String, String>> log = (List<Pair<String, String>>) backlogReader.readObject();
+		// get handle & target
+		con.handle = (String) con.in.readObject();
+		con.target = (String) con.in.readObject();
 
-				for (Pair<String, String> pair : log){
-					con.out.writeObject(pair.getKey());
-					con.out.writeObject(pair.getValue());
-				}
+		connections.add(con);
 
-				new File(con.handle + ".ser").delete();
-			} catch (Exception e) {
-				// fail silently, not always messages to send
+		System.out.println("Connection with " + con.handle + " established.");
+
+		// catchup messages
+		try (ObjectInputStream backlogReader = new ObjectInputStream(
+				new FileInputStream(new File(con.handle + ".ser")));) {
+			List<Pair<String, String>> log = (List<Pair<String, String>>) backlogReader.readObject();
+
+			for (Pair<String, String> pair : log) {
+				System.out.println(log.size());
+				System.out.println("MESSAGE: " + pair.getKey() + " " + pair.getValue());
+				con.out.writeObject(pair.getKey());
+				con.out.writeObject(pair.getValue());
 			}
-
-			// keepup messages // check for message overflow and shut down
-			// server
-			while (true) {
-				try {
-					String message = (String) con.in.readObject();
-					
-					System.out.println("Got message from: " + con.handle + "\nMessage: " + message + "\nForwarding to: "
-							+ con.target + "\n");
-					
-					boolean found = false;
-					
-					for (Connection c : connections)
-						if (c.handle.equals(con.target)) {
-							c.out.writeObject(con.handle);
-							c.out.writeObject(message);
-							found = true;
-							break;
-						}
-					if (!found) {
-						try (ObjectInputStream backlogReader = new ObjectInputStream(
-								new FileInputStream(new File(con.target + ".ser")));
-								ObjectOutputStream backlogWriter = new ObjectOutputStream(
-										new FileOutputStream(new File(con.target + ".ser")));) {
-							List<Pair<String, String>> log;
-							try {
-								log = (List<Pair<String, String>>) backlogReader.readObject();
-							} catch (Exception e) {
-								log = new LinkedList<>();
-							}
-
-							log.add(new Pair<String, String>(con.handle, message));
-
-							backlogWriter.writeObject(log);
-						}
-					}
-				} catch (Exception e) {
-					break;
-				}
-			}
-
-			connections.remove(con);
+		} catch (Exception e) {
+			// fail silently, not always messages to send
 		}
+		new File(con.handle + ".ser").delete();
+
+		// keepup messages // check for message overflow and shut down
+		// server
+		while (true) {
+			try {
+				String message = (String) con.in.readObject();
+
+				System.out.println("Got message from: " + con.handle + "\nMessage: " + message + "\nForwarding to: "
+						+ con.target + "\n");
+
+				boolean found = false;
+
+				for (Connection c : connections)
+					if (c.handle.equals(con.target)) {
+						c.out.writeObject(con.handle);
+						c.out.writeObject(message);
+						found = true;
+						break;
+					}
+				if (!found) {
+					List<Pair<String, String>> log;
+					try (ObjectInputStream backlogReader = new ObjectInputStream(
+							new FileInputStream(new File(con.target + ".ser")))) {
+						log = (List<Pair<String, String>>) backlogReader.readObject();
+					} catch (Exception e) {
+						System.out.println("Creating new list, can't load old one.");
+						log = new LinkedList<>();
+					}
+
+					try (ObjectOutputStream backlogWriter = new ObjectOutputStream(
+							new FileOutputStream(new File(con.target + ".ser")))) {
+						log.add((new Pair<String, String>(con.handle, message)));
+						backlogWriter.writeObject(log);
+					} catch (Exception e) {
+						System.out.println("Failed to save message to forward later.");
+					}
+				}
+			} catch (Exception e) {
+				System.out.println(con.handle + "'s connection dropped.");
+
+				break;
+			}
+		}
+		connections.remove(con);
 	}
+}

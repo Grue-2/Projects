@@ -29,7 +29,7 @@
                   <TextArea editable="false" prefHeight="150.0" prefWidth="443.0" text="Tips&#10;&#10;&#10;&#10;Should lag on first connect becuase it has to eat keys.&#10;" />
                   <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../splash.png" />
+                        <Image url="@splash.png" />
                      </image>
                   </ImageView>
                </children>

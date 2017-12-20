@@ -7,7 +7,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class Client extends Application{
-	static final String REMOTE_IP = "96.41.48.205";
+	static final String REMOTE_IP = "witiko.co";
 	static final int PORT_NUMBER = 55555;
 	
 	private static Stage s;
