@@ -497,5 +497,8 @@ below is the MUD I made before I knew any GUI programming.
 
 ![alt text](/images/mudrunner2.PNG "filter example image")
 
+- added a Diffie-Hellman attempt, functions although I don't know enought about
+the math to know if its secure at all. (undocumented)
+
 [to top](#top)
 
