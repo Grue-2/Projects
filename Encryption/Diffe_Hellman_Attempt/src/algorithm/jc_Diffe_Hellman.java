@@ -12,7 +12,16 @@ import java.net.InetAddress;
 import java.net.InetSocketAddress;
 import java.net.Socket;
 import java.net.UnknownHostException;
+import java.security.InvalidAlgorithmParameterException;
+import java.security.InvalidKeyException;
+import java.security.NoSuchAlgorithmException;
 import java.util.Scanner;
+
+import javax.crypto.BadPaddingException;
+import javax.crypto.IllegalBlockSizeException;
+import javax.crypto.NoSuchPaddingException;
+
+import aes.AES;
 
 public class jc_Diffe_Hellman {
 	private static final String REMOTE_IP = "witiko.co";
@@ -29,9 +38,17 @@ public class jc_Diffe_Hellman {
 			+ "3056DC1C36C989DE6B107EA2007F56981FD4043D726C40B148683094CD83F5C449009DA39D40C"
 			+ "5F3A818611EC09332469645E719DD1FC1DE95DC6D73D3A1A0168E8F6CA3B58C47EF87B5CCDF271" 
 			+ "CFF5D2B9015BF07", 16);
+	/*
+	
+		private static BigInteger p = 
+	
+	
+	
+	
+	*/
 	private static BigInteger g = new BigInteger("5");
 
-	public static void main(String[] args) throws UnknownHostException, IOException {
+	public static void main(String[] args) throws UnknownHostException, IOException, NoSuchAlgorithmException, InvalidKeyException, ClassNotFoundException, NoSuchPaddingException, IllegalBlockSizeException, BadPaddingException, InvalidAlgorithmParameterException {
 		Scanner consoleScanner = new Scanner(System.in);
 		System.out.println("Please enter your handle:");
 		String handle = consoleScanner.nextLine();
@@ -41,7 +58,7 @@ public class jc_Diffe_Hellman {
 		String text = consoleScanner.nextLine();
 		consoleScanner.close();
 
-		BigInteger input1 = diffie(new BigInteger(text)), input2 = null;
+		BigInteger input1 = diffie(new BigInteger(text, 16)), input2 = null;
 
 		Socket con = new Socket();
 		con.connect(new InetSocketAddress(InetAddress.getByName(REMOTE_IP), PORT_NUMBER));
@@ -50,7 +67,7 @@ public class jc_Diffe_Hellman {
 
 			netOut.writeObject(handle);
 			netOut.writeObject(target);
-			netOut.writeObject(text);
+			netOut.writeObject(input1.toString());
 			System.out.println("Output sent.");
 
 			String inHandle = (String) netIn.readObject();
@@ -62,15 +79,23 @@ public class jc_Diffe_Hellman {
 			e.printStackTrace();
 		}
 
-		System.out.println(input1 + " " + input2);
+		System.out.println("input1: "+new BigInteger(text, 16) + "\n input2: " + input2);
 
-		BigInteger result = diffie(input2, input1);
+		BigInteger result = diffie(new BigInteger(text, 16),input2);
 
+//		byte[] resultBytes = result.toByteArray();
+//		
+//		try(FileOutputStream fos = new FileOutputStream(new File("KeyFileDH"))){
+//			fos.write(resultBytes);
+//		}
+		// because I wrote the stupid chat program to do this, and I could
+		// change the chat program but what the hell.
+		//AES.encrypt("KeyFileDH", "KeyFileDHSER_TEST");
+		
 		BufferedWriter save = new BufferedWriter(new PrintWriter(new FileOutputStream(new File("dfkey.txt"))));
 		save.write(result.toString());
-
-		con.close();
 		save.close();
+		con.close();
 	}
 
 	private static BigInteger diffie(BigInteger in, BigInteger base) {
