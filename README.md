@@ -298,9 +298,12 @@ If anything goes wrong keys get out of line, goodluck.
 
 ## Encryption
 <a name="5"></a>
-### OTP_With_Integrity_Attempt/2 - scramble(one time pad(hash(message) + message)) 
+### OTP_With_Integrity_Attempt/2 - one time pad(scramble(pad(hash(message) + message)))
 
 ####
+(Basically what I did was give the attacker a way to verify by hash if they guessed
+your key correctly)
+
 This is why one doesn't try to make new crypto.
 
 Took me quite some time to realize why this is absolutely broken from the outset.
@@ -311,6 +314,8 @@ is like 400 operations, and probably no collisions )
 
 While I do feel like theres egg on my face its nice to learn why that doesn't work.
 
+
+^ Testing this
 
 [to top](#top)
 
