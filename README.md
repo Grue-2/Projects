@@ -348,6 +348,27 @@ and any further attempts tend to stay invalid (unless you readjust the keys).
 As a note the program saves the binary keys when you "x" out of it.
 And the keys that it comes with are not random.
 
+
+#### OTP_With_Integrity_Attempt2
+
+##### Preface
+I just wanted to see how similar or different my code was after a few classes.
+
+##### Purpose
+The idea here was that my scrambling algorithm in v.01 took O(n*n) entropy, essentially
+using anti bubble sort entropy wise. Here I used a merge shuffle which took O(n)
+entropy (Not talking about runtime) and also doesn't rejection sampling to waste entropy.
+
+Originally I meant to make the code clean... guess some things don't change.
+
+##### Method of action
+Same as before, but now pads to a power of 2 in length then uses less entropy to
+randomize. Also uses sqlite-jdbc.
+
+##### User guide
+
+No significant changes.
+
 [to top](#top)
 
 <a name="6"></a>
