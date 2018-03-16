@@ -298,76 +298,19 @@ If anything goes wrong keys get out of line, goodluck.
 
 ## Encryption
 <a name="5"></a>
-### OTP_With_Integrity_Attempt - scramble(one time pad(hash(message) + message)) 
+### OTP_With_Integrity_Attempt/2 - scramble(one time pad(hash(message) + message)) 
 
-(note: padding out the message to a set length could be done, but the major limiter
-for me was entropy bits. So I limited the number of characters in a message to a 6bit set 
-and did not padd out message lengths).
+####
+This is why one doesn't try to make new crypto.
 
-#### Preface
-Despite having perfect secrecy one time pading does not provide any checks for
-message integrity.
+Took me quite some time to realize why this is absolutely broken from the outset.
 
-#### Purpose
-The idea here is to scramble the message using numbers off the key material after hashing
-in order to make attempts to change the original message very difficult to hide. That is
-it attempts to add message integrity to the encrypted message.
+The hash allows an attacker to get the message/key up to the hash collision space
+the message in time equal to the amount of key used. ( which for small messages
+is like 400 operations, and probably no collisions )
 
-#### Method of action
-encryption: scramble(one time pad(hash(message) + message))
+While I do feel like theres egg on my face its nice to learn why that doesn't work.
 
-The hash is a java sha1.
-The one time pad is just xor (or in this case bi-conditional).
-The scramble uses rejection sampling to generate numbers to scramble the message.
-Then the encryption is wrapped in a javaFX gui for ease of use.
-
-#### User guide
-
-Eclipse project, import into eclipse or what have you.
-Main has the main method to run.
-Once it runs it should look like this:
-
-![alt text](/images/otpStart.png "filter example image")
-
-The key material the program uses is binary strings.
-
-To use real keys have the key material as binary strings. The slot
-next to "Key you" is used for encrypt, and "Key them" is used to decrypt.
-
-If you want encrypt something place it in the slot next to the encrypt button
-then press encrypt, vice versa for decrypt.
-
-If the message has been tampered with there is a high probability it did not match
-the hash change as well and it will give you the message below:
-
-![alt text](/images/notvalid.png "filter example image")
-
-Keep in mind that once something is invalid the keys will fall out of sync,
-and any further attempts tend to stay invalid (unless you readjust the keys).
-
-As a note the program saves the binary keys when you "x" out of it.
-And the keys that it comes with are not random.
-
-
-#### OTP_With_Integrity_Attempt2
-
-##### Preface
-I just wanted to see how similar or different my code was after a few classes.
-
-##### Purpose
-The idea here was that my scrambling algorithm in v.01 took O(n*n) entropy, essentially
-using anti bubble sort entropy wise. Here I used a merge shuffle which took O(n)
-entropy (Not talking about runtime) and also doesn't rejection sampling to waste entropy.
-
-Originally I meant to make the code clean... guess some things don't change.
-
-##### Method of action
-Same as before, but now pads to a power of 2 in length then uses less entropy to
-randomize. Also uses sqlite-jdbc.
-
-##### User guide
-
-No significant changes.
 
 [to top](#top)
 
