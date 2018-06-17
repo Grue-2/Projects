@@ -347,15 +347,20 @@ As a note the program saves the binary keys when you "x" out of it.
 And the keys that it comes with are not random.
 
 
-#### OTP_With_Integrity_Attempt2
+#### OTP_With_Integrity_Attempt2(Defunct - scrambling error)
 
 ##### Preface
 I just wanted to see how similar or different my code was after a few classes.
 
 ##### Purpose
+
+Realized the issue with associated scrambling. While each element has an equal chance
+of being in the same place, they associate with one another making the scrambling
+rather ineffective.
+/*
 The idea here was that my scrambling algorithm in v.01 took O(n*n) entropy, essentially
 using anti bubble sort entropy wise. Here I used a merge shuffle which took O(n)
-entropy (Not talking about runtime) and also doesn't rejection sampling to waste entropy.
+entropy (Not talking about runtime) and also doesn't rejection sampling to waste entropy.*/
 
 Originally I meant to make the code clean... guess some things don't change.
 
