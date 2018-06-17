@@ -357,6 +357,7 @@ I just wanted to see how similar or different my code was after a few classes.
 Realized the issue with associated scrambling. While each element has an equal chance
 of being in the same place, they associate with one another making the scrambling
 rather ineffective.
+
 /*
 The idea here was that my scrambling algorithm in v.01 took O(n*n) entropy, essentially
 using anti bubble sort entropy wise. Here I used a merge shuffle which took O(n)
